@@ -9,7 +9,7 @@ import { IoMdAdd } from 'react-icons/io';
 import { useAuth } from '../../context';
 const Navbar = () => {
 
-const {userinfo} = useAuth();
+const {userinfo, logout,signInWithGoogle} = useAuth();
 const [searchValue, setSearchValue] = useState('');
 const router = useRouter();
 
@@ -32,11 +32,11 @@ const handleSearch = (e) => {
 <div>
 <div className='w-full flex justify-between items-center border-b-2 border-gray-200 py-2 px-4'>
       <Link href='/'>
-        <div className='w-[100px] md:w-[129px] md:h-[30px] h-[38px]'>
-          <image
+        <div className='w-[100px] md:w-[129px] md:h-[50px] h-[44px]'>
+          <img
           
-            className='cursor-pointer'
-            src='https://project-tiktik.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftiktik-logo.25e3b9c4.png&w=1920&q=75'
+            className='cursor-pointer w-full h-full  rounded-full object-contain'
+            src='https://cdn3.iconfinder.com/data/icons/social-media-flat-black/512/tiktok_flat_black-256.png'
             alt='logo'
             layout='responsive'
           />
@@ -63,7 +63,7 @@ const handleSearch = (e) => {
         </form>
       </div>
       <div>
-        {userinfo ? (
+        {userinfo?.name ? (
           <div className='flex gap-5 md:gap-10'>
             <Link href='/upload'>
               <button className='border-2 px-2 md:px-4 text-md font-semibold flex items-center gap-2'>
@@ -95,7 +95,9 @@ const handleSearch = (e) => {
               </button>
           </div>
         ) : (
-            <div>
+            <div
+            onClick={signInWithGoogle()}
+            >
                 sign with google
             </div>
             // <GoogleLogin

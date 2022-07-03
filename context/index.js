@@ -45,12 +45,7 @@ export const useAuth = () => {
 const AuthContext = ({ children }) => {
   const [currentuser, setUser] = useState({});
   const [userinfo, setUserinfo] = useState({});
-  const [groupid_upate, setGroupid_update] = useState("");
-  const [productsNew, setProductsNew] = useState([]);
-  const [related, setRelated] = useState([]);
-  const [searchedproducts, setSearchedproducts] = useState([]);
-  const [products, setAllProducts] = useState([]);
-  const [searchText, setSearchText] = useState("");
+ 
   const dispatch = useDispatch();
 
 
@@ -111,8 +106,10 @@ const AuthContext = ({ children }) => {
       password: "",
 
       cart: [],
-      rezerv: [],
-      totalprice: 0,
+      posts: [],
+      comments: [],
+      likes: [],
+     
     });
   };
 
@@ -170,6 +167,7 @@ const AuthContext = ({ children }) => {
     signUp,
     signIn,
     logout,
+    signInWithGoogle
    
    
  
