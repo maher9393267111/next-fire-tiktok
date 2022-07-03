@@ -13,23 +13,18 @@ export default function Home() {
 <div>
 
   nxt app
+  
+  <div className=' hello'>
+    hello
+  </div>
  
 
-  <video id='video' controls="controls" preload='none' width="600" poster="https://assets.codepen.io/32795/poster.png">
-    <source id='mp4' src="http://media.w3.org/2010/05/sintel/trailer.mp4" type='video/mp4' />
-  
-    </video>
+ 
 
  
 
 
-{/* 
-<video id='video' controls="controls" preload='none' width="600" poster="https://assets.codepen.io/32795/poster.png">
 
-<source id='mp4' src="blob:https://player.vimeo.com/deb7190b-1e03-4f14-aa9f-04ccd63a1c60" type='video/mp4' />
-  
-
-  </video> */}
 </div>
 
 
