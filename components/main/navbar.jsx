@@ -24,7 +24,8 @@ const handleSearch = (e) => {
 
     return (
         <div className=''>
-            
+
+          {userinfo?.name}  
 <div>
 
 {/* ---flex parent---- */}
@@ -96,7 +97,7 @@ const handleSearch = (e) => {
           </div>
         ) : (
             <div
-            onClick={signInWithGoogle()}
+            onClick={signInWithGoogle}
             >
                 sign with google
             </div>

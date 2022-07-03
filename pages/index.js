@@ -4,6 +4,9 @@ import styles from '../styles/Home.module.css'
 import {Box} from '@chakra-ui/react'
 
 export default function Home() {
+
+
+
   return (
     <div className={styles.container}>
       <Head>
