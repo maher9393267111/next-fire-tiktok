@@ -74,19 +74,24 @@ const {videos,topic,postedby,postedbyImage,caption,id,potedbyEmail} = post
               </div>
             </div>
           </div>
-    
+
+
+
+
+
+
           <div className='lg:ml-20 flex gap-4 relative'>
             <div
               onMouseEnter={() => setIsHover(true)}
               onMouseLeave={() => setIsHover(false)}
-              className='rounded-3xl'
+              className='rounded-3xl w-full'
             >
               <Link href={`/detail/${id}`}>
                 <video
                   loop
                   ref={videoRef}
                   src={videos.video}
-                  className='lg:w-[600px] h-[300px] md:h-[400px] lg:h-[528px] w-[200px] rounded-2xl cursor-pointer bg-gray-100'
+                  className='lg:w-[600px]  h-[300px] md:h-[400px] lg:h-[528px] w-2/3 rounded-2xl cursor-pointer bg-gray-100'
                 ></video>
               </Link>
     

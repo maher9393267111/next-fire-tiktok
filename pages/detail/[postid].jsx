@@ -11,22 +11,24 @@ import safeJsonStringify from "safe-json-stringify";
 
 import { db } from "../../firebase";
 import VideoCard from '../../components/video/videoCard';
+import CommntInput from '../../components/video/commntInput';
+import CommnetList from '../../components/video/commnetList';
 const Postid = ({post}) => {
     return (
         <div>
 
-<div>
+<div className=' pb-24'>
 
 
 {/* ----grid video and commnets sidebar--- */}
 
 
-<div className=' grid-cols-12'>
+<div className=' mt-12-121-121-121'>
 
 
 {/* ---video side--- */}
 
-<div className=' cols-span-6'>
+<div className=' '>
 
 <VideoCard post={post} />
 </div>
@@ -37,8 +39,17 @@ const Postid = ({post}) => {
 
 <div>
     <div>
-        <h1>Commnets Sidebar</h1>
+        
+
+<CommntInput post={post} />
+
     </div>
+
+<div>
+<CommnetList post={post} />
+</div>
+
+
 </div>
 
 
