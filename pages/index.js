@@ -5,6 +5,7 @@ import {Box} from '@chakra-ui/react'
 import { AllPosts,PostsByTopic} from '../utils/db'
 import {useState,useEffect} from 'react'
 import {useRouter} from 'next/router'
+import VideoCard from '../components/video/videoCard'
 export default function Home() {
 
 const [posts, setPosts] = useState([]);
@@ -52,10 +53,33 @@ if (topic ===  undefined  || topic === null) {
 <div>
 
  
-  
+  <div>
 
 
- <h1 className='lg:bg-green-300'>maher</h1>
+<div>
+
+{/* //----make map to all posts and display them */}
+
+{posts.map(post => {
+
+return (
+<div key={post.id}>
+<VideoCard homepage={true} post={post}/>
+</div>
+
+)})}
+
+
+</div>
+
+
+
+
+
+  </div>
+
+
+
  
 
  

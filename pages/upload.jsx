@@ -91,6 +91,7 @@ setVideos( { video: down, name: filename });
           postedby: userinfo.name,
           potedbyEmail: userinfo.email,
           postedbyImage: userinfo.image,
+          postedbyId: userinfo.id,
             caption: caption,
             topic: topic,
             videos: videos,
