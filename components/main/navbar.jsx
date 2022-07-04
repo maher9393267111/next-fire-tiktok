@@ -25,7 +25,7 @@ const handleSearch = (e) => {
     return (
         <div className=''>
 
-          {userinfo?.name}  
+       
 <div>
 
 {/* ---flex parent---- */}
@@ -69,16 +69,16 @@ const handleSearch = (e) => {
             <Link href='/upload'>
               <button className='border-2 px-2 md:px-4 text-md font-semibold flex items-center gap-2'>
                 <IoMdAdd className='text-xl' />{' '}
-                <span className='hidden md:block'>Upload </span>
+                <span className='hidden md:block'>Upload  </span>
               </button>
             </Link>
-            {userinfo?.image && (
+            {userinfo.name && (
               <Link href={`/profile/${userinfo._id}`}>
                 <div>
-                  <image
-                    className='rounded-full cursor-pointer'
-                    src={userinfo?.image}
-                    alt='user'
+                  <img
+                    className='w-8 mt-2 h-8 rounded-full cursor-pointer'
+                    src={userinfo.image}
+                    alt='suerimage'
                    
                   />
                 </div>
@@ -87,10 +87,7 @@ const handleSearch = (e) => {
               <button
                 type='button'
                 className=' border-2 p-2 rounded-full cursor-pointer outline-none shadow-md'
-                onClick={() => {
-                //   googleLogout();
-                //   removeUser();
-                }}
+                onClick={logout}
               >
                 <AiOutlineLogout color='red' fontSize={21} />
               </button>
@@ -99,7 +96,7 @@ const handleSearch = (e) => {
             <div
             onClick={signInWithGoogle}
             >
-                sign with google
+               <img className='mr-2 w-8 h-8 rounded-full' src="https://cdn1.iconfinder.com/data/icons/logos-brands-in-colors/544/Google__G__Logo-256.png" alt="" />
             </div>
             // <GoogleLogin
             //   onSuccess={(response) => createOrGetUser(response, addUser)}
