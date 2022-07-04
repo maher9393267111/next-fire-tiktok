@@ -73,7 +73,7 @@ const handleSearch = (e) => {
               </button>
             </Link>
             {userinfo.name && (
-              <Link href={`/profile/${userinfo._id}`}>
+              <Link href={`/profile/${userinfo.id}`}>
                 <div>
                   <img
                     className='w-8 mt-2 h-8 rounded-full cursor-pointer'

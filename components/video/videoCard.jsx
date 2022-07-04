@@ -37,8 +37,7 @@ const {videos,topic,postedby,postedbyImage,caption,id,potedbyEmail} = post
     
 
 
-
-     
+      
       return (
         <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
           <div>
