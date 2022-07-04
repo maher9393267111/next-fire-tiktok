@@ -4,7 +4,7 @@ import {topics} from '../utils/topics';
 import {useRouter} from 'next/router';
 import { FaCloudUploadAlt } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
-
+import {createPost} from '../utils/db'; 
 import {
     getDownloadURL,
     ref,
@@ -90,6 +90,7 @@ setVideos( { video: down, name: filename });
         const postdata = {
           postedby: userinfo.name,
           potedbyEmail: userinfo.email,
+          postedbyImage: userinfo.image,
             caption: caption,
             topic: topic,
             videos: videos,
@@ -98,17 +99,24 @@ setVideos( { video: down, name: filename });
        
           //description:values.product.description,
         };
+        console.log(postdata);
     
-        createProduct(postdata);
+        createPost(postdata);
     
         setVideos([]);
-      
+      setTopic('')
 
 
   }
 
   const handleDiscard= async () => {
 
+
+
+    setVideos([]);
+  deleteImage();
+
+  
 }
 
 const deleteImage = async () => {
@@ -145,6 +153,7 @@ setLoading(true);
         <div>
 
 <>
+{topic}
 <div className='flex w-full h-full absolute left-0 top-[60px] lg:top-[70px] mb-10 pt-10 lg:pt-20 bg-[#F8F8F8] justify-center'>
       <div className=' bg-white rounded-lg xl:h-[80vh] flex gap-6 flex-wrap justify-center items-center p-14 pt-6'>
         <div>
@@ -257,7 +266,7 @@ id='video' controls="controls" preload='none' width="600" poster="">
               Discard
             </button>
             <button
-              disabled={videoAsset?.url ? false : true}
+             // disabled={video ? false : true}
               onClick={handlePost}
               type='button'
               className='bg-[#F51997] text-white text-md font-medium p-2 rounded w-28 lg:w-44 outline-none'
