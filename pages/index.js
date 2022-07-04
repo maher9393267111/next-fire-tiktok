@@ -2,8 +2,43 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import {Box} from '@chakra-ui/react'
-
+import { AllPosts,PostsByTopic} from '../utils/db'
+import {useState,useEffect} from 'react'
+import {useRouter} from 'next/router'
 export default function Home() {
+
+const [posts, setPosts] = useState([]);
+
+// current query
+const router = useRouter();
+const { topic } = router.query;
+console.log('🌟🌟🌟--->',topic);
+
+
+useEffect(() => {
+
+if (topic) {
+
+  PostsByTopic(topic).then(posts => {
+    setPosts(posts);
+  }).catch(err => {
+    console.log(err);
+  }).finally(() => {
+    console.log('finally');
+  }
+  )
+}
+
+if (topic ===  undefined  || topic === null) {
+
+
+  AllPosts().then(res => {
+    setPosts(res)
+    console.log('res------>',res)
+  } )
+
+}
+}, [topic])
 
 
 

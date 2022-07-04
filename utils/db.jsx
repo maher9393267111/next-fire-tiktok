@@ -53,3 +53,50 @@ export const createPost = async (postdata) => {
     }
     );
 }
+
+
+
+
+
+export const AllPosts= () => {
+    return getDocs(query(collection(db, "posts"),    
+   // orderBy('orderby', "desc")
+    )).then((querySnapshot) => {
+  
+      var data = [];
+      querySnapshot.forEach((doc) => {
+     
+          console.log("posts is exist");
+          
+          data.push({ ...doc.data(),id: doc.id  })
+        
+      });
+    //  setProductsNew(data);
+  console.log("Posts------>",data);
+      return  data;
+    });
+  }
+
+
+
+  
+
+export const PostsByTopic= (topic) => {
+    return getDocs(query(collection(db, "posts"), 
+    where("topic", "==", topic)   
+   // orderBy('orderby', "desc")
+    )).then((querySnapshot) => {
+  
+      var data = [];
+      querySnapshot.forEach((doc) => {
+     
+          console.log("posts is exist");
+          
+          data.push({ ...doc.data(),id: doc.id  })
+        
+      });
+    //  setProductsNew(data);
+  console.log("Posts by specefic Topic------>",data);
+      return  data;
+    });
+  }

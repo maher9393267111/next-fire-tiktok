@@ -101,10 +101,13 @@ setVideos( { video: down, name: filename });
         };
         console.log(postdata);
     
-        createPost(postdata);
+        createPost(postdata).then(() => {
+          setVideos([]);
+          setTopic('')
+          setCaption('');
+        })
     
-        setVideos([]);
-      setTopic('')
+   
 
 
   }
@@ -112,9 +115,9 @@ setVideos( { video: down, name: filename });
   const handleDiscard= async () => {
 
 
-
+setCaption('');
     setVideos([]);
-  deleteImage();
+  //deleteImage();
 
   
 }
