@@ -39,13 +39,17 @@ useEffect(() => {
   }, [userinfo, router]);
 
 
+
+
+
   const [caption, setCaption] = useState('');
   const [topic, setTopic] = useState(topics[0].name);
   const [loading, setLoading] = useState(false);
   const [savingPost, setSavingPost] = useState(false);
   const [videoAsset, setVideoAsset] = useState();
   const [wrongFileType, setWrongFileType] = useState(false);
-const [videos, setVideos] = useState({});
+const [videos, setVideos] = useState({video:'',name: ''});
+const [deleted, setDeleted] = useState(false);
 
   const uploadVideo  = async (e) => {
 console.log()
@@ -80,17 +84,60 @@ setVideos( { video: down, name: filename });
 
   const handlePost = async () => {
 
-
+    
+      
+    
+        const postdata = {
+          postedby: userinfo.name,
+          potedbyEmail: userinfo.email,
+            caption: caption,
+            topic: topic,
+            videos: videos,
+       
+         
+       
+          //description:values.product.description,
+        };
+    
+        createProduct(postdata);
+    
+        setVideos([]);
+      
 
 
   }
 
   const handleDiscard= async () => {
 
-
-
-
 }
+
+const deleteImage = async () => {
+
+
+
+    const desertRef = ref(storage, `${userinfo.name}/${videos.name}`);
+    // console.log("🕊️ 🕊️ 🕊️ 🕊️", photoname);
+
+setLoading(true);
+
+    await deleteObject(desertRef)
+      .then(() => {
+        "Deleted! ";
+        toast.success("Deleted Successfully");
+        setDeleted(true);
+      }).then(() => {
+        // filter out the deleted image
+        setVideos({viedo: '', name: ''});
+        console.log("video ---->", videos);
+      }).catch((error) => {
+      //  console.log("Uh-oh, an error occurred!");
+        toast.error("Error Deleting");
+        setLoading(false);
+        setDeleted(false);
+      })
+      setLoading(false);
+     
+  };
 
 
 
@@ -102,7 +149,7 @@ setVideos( { video: down, name: filename });
       <div className=' bg-white rounded-lg xl:h-[80vh] flex gap-6 flex-wrap justify-center items-center p-14 pt-6'>
         <div>
           <div>
-            <p className='text-2xl font-bold'>Upload Video</p>
+            <p className='text-2xl font-bold'>Upload Video {videos.name}</p>
             <p className='text-md text-gray-400 mt-1'>Post a video to your account</p>
           </div>
           <div className=' border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center  outline-none mt-10 w-[260px] h-[458px] p-10 cursor-pointer hover:border-red-300 hover:bg-gray-100'>
@@ -112,7 +159,7 @@ setVideos( { video: down, name: filename });
               </p>
             ) : (
               <div>
-                {!videoAsset ? (
+                { videos.name === '' ?  (
                   <label className='cursor-pointer'>
                     <div className='flex flex-col items-center justify-center h-full'>
                       <div className='flex flex-col justify-center items-center'>
@@ -143,18 +190,23 @@ setVideos( { video: down, name: filename });
                   </label>
                 ) : (
                   <div className=' rounded-3xl w-[300px]  p-4 flex flex-col gap-6 justify-center items-center'>
-                    <video
-                      className='rounded-xl h-[462px] mt-16 bg-black'
-                      controls
-                      loop
-                      src={videoAsset?.url}
-                    />
+                
+
+
+<video 
+  className='rounded-xl h-[462px] mt-16 bg-black'
+id='video' controls="controls" preload='none' width="600" poster="">
+    <source id='mp4' src={videos.video} type='video/mp4' />
+
+    </video>
+
+
                     <div className=' flex justify-between gap-20'>
-                      <p className='text-lg'>{videoAsset.originalFilename}</p>
+                      <p className='text-lg'>{videos.name}</p>
                       <button
                         type='button'
                         className=' rounded-full bg-gray-200 text-red-400 p-2 text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out'
-                        onClick={() => setVideoAsset(undefined)}
+                        onClick={deleteImage}
                       >
                         <MdDelete />
                       </button>

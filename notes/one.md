@@ -6,4 +6,7 @@
     </video>
     --------------------------------------------------
 
-    
+      <video id='video' controls="controls" preload='none' width="600" poster="">
+    <source id='mp4' src={videos.video} type='video/mp4' />
+
+    </video>
