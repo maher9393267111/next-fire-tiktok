@@ -16,22 +16,13 @@ export default function Home() {
       </Head>
 <div>
 
-  nxt app
+ 
   
-  <div className=' hello'>
-    hello
-  </div>
+
+
+ <h1 className='lg:bg-green-300'>maher</h1>
  
 
- 
- 
-
-  <video id='video' controls="controls" preload='none' width="600" 
-
-  >
-    <source id='mp4' src="https://media.istockphoto.com/videos/young-woman-is-recording-a-tiktok-dancered-helium-8k-video-id1286156840" type='video/mp4' />
-
-    </video>
  
 
 

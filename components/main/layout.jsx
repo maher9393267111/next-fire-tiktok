@@ -14,17 +14,16 @@ const Layout = ({children}) => {
 
 <div>
 
-<div className=' grid grid-cols-12'>
+<div className=' grid gap-6 grid-cols-12'>
 
 {/* ---sidebar-- */}
-<div className=' cols-span-3'>
+<div className=' sm:col-span-2 md:col-span-4'>
     <Sidebar />
 </div>
 
-<div className=' col-span-9'>
+<div className='sm:col-span-10 md:col-span-8'>
     {children}
 </div>
-
 
 
 </div>
