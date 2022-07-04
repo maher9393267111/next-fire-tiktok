@@ -17,6 +17,8 @@ import {
     orderBy,
     where,
     getDocs,
+    arrayRemove,
+    arrayUnion
   } from "firebase/firestore";
   import {
     useCollectionData,
@@ -62,6 +64,8 @@ useEffect(() => {
 
 
 
+  
+
 
 // liked post
 
@@ -74,6 +78,13 @@ const likedPost = async () => {
         //  console.log(post.id, "___post id____");
           // delete doc from likes if aleready liked
           await deleteDoc(doc(db, "posts", post.id, "likes", userinfo.id));
+
+// remove like from user   likes
+            await updateDoc(doc(db, "users", userinfo.id), {
+                likes: arrayRemove(post),
+                });
+
+
       //    toast.error("Post unliked");
         } else {
           setRefresh(!refresh);
@@ -83,6 +94,15 @@ const likedPost = async () => {
             username: userinfo.name,
             id : userinfo.id,
           });
+          // update user likes array
+
+            await updateDoc(doc(db, "users", userinfo.id), {
+                likes: arrayUnion(post),
+              }
+            );
+       //   toast.success("Post liked");
+        
+
         //  toast.success("Post liked");
         }
       } else {
@@ -101,6 +121,8 @@ const likedPost = async () => {
     return (
         <div className=''>
 
+
+{ userinfo?.name ? ( 
             <div className=' conteiner lg:top-[17px] relative'>
 
           <div className='icon-container lg:relative lg:top-[30px] '>
@@ -117,6 +139,12 @@ const likedPost = async () => {
            
         </div>
         </div>
+        ) : (
+
+<h1>You Have to LOgged to Make Like</h1>
+
+
+        )}
 
         </div>
     );

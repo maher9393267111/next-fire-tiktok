@@ -8,7 +8,7 @@ import {
   } from "react-firebase-hooks/firestore";
   import { query, orderBy, collection, doc,getDoc} from "firebase/firestore";
 import safeJsonStringify from "safe-json-stringify";
-
+import Tab from '../../components/user/Tab';
 import { db } from "../../firebase";
 
 const Userid = (user) => {
@@ -20,7 +20,13 @@ const Userid = (user) => {
 
     return (
         <div>
-            user is {user?.user?.name}
+            
+<div>
+<Tab user={user.user} />
+</div>
+
+
+
         </div>
     );
 }

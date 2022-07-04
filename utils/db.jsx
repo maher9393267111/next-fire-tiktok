@@ -100,3 +100,50 @@ export const PostsByTopic= (topic) => {
       return  data;
     });
   }
+
+
+
+  
+export const userPosts= (userName) => {
+  return getDocs(query(collection(db, "posts"), 
+  where("postedby", "==", userName)   
+ // orderBy('orderby', "desc")
+  )).then((querySnapshot) => {
+
+    var data = [];
+    querySnapshot.forEach((doc) => {
+   
+        console.log("user posts is exist");
+        
+        data.push({ ...doc.data(),id: doc.id  })
+      
+    });
+  //  setProductsNew(data);
+console.log("specefic user Posts----->",data);
+    return  data;
+  });
+}
+
+
+// userLikesPosts
+
+
+export const userLikesPosts= (userName) => {
+  return getDocs(query(collection(db, "posts"), 
+  where("postedby", "==", userName)   
+ // orderBy('orderby', "desc")
+  )).then((querySnapshot) => {
+
+    var data = [];
+    querySnapshot.forEach((doc) => {
+   
+        console.log("user posts is exist");
+        
+        data.push({ ...doc.data(),id: doc.id  })
+      
+    });
+  //  setProductsNew(data);
+console.log("specefic user Posts----->",data);
+    return  data;
+  });
+}
