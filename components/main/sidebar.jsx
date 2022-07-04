@@ -1,6 +1,7 @@
 import React from 'react';
 import Discover from '../sidebaar/discover';
 import Footer from '../sidebaar/footer';
+import SuggestedAccounts from '../sidebaar/suggestedAccounts';
 import  { useState } from 'react';
 import { ImCancelCircle } from 'react-icons/im';
 import { useRouter } from 'next/router';
@@ -45,10 +46,9 @@ const Sidebar = () => {
           </div>
           
           <Discover />
-          {/* <SuggestedAccounts
-            fetchAllUsers={fetchAllUsers}
-            allUsers={allUsers}
-          /> */}
+          <SuggestedAccounts
+       
+          />
           <Footer />
         </div>
       )}

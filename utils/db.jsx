@@ -147,3 +147,26 @@ console.log("specefic user Posts----->",data);
     return  data;
   });
 }
+
+
+
+
+export const AllUsers= () => {
+  return getDocs(query(collection(db, "users"),    
+ // orderBy('orderby', "desc")
+  )).then((querySnapshot) => {
+
+    var data = [];
+    querySnapshot.forEach((doc) => {
+   
+        console.log("users is exist");
+        
+        data.push({ ...doc.data(),id: doc.id  })
+      
+    });
+  //  setProductsNew(data);
+console.log("allUSers ------>",data);
+    return  data;
+  });
+}
+
